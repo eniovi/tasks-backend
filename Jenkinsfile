@@ -1,5 +1,6 @@
 pipeline {
     agent any
+    
     tools {
         maven 'MVN_363'
         jdk 'JAVA_8'
@@ -10,7 +11,12 @@ pipeline {
         	steps {
             	sh 'mvn clean package -DskipTests=true'
             }
-
+        }
+        
+        stage ('Unit Tests') {
+        	steps {
+            	sh 'mvn test'
+            }
         }
     }
 }
