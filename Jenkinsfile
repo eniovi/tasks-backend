@@ -1,5 +1,10 @@
 pipeline {
     agent any
+    tools {
+        maven 'MVN_363'
+        jdk 'JAVA_8'
+    }
+
     stages {
         stage ('Build Backend') {
         	steps {
