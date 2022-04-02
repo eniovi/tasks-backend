@@ -54,6 +54,16 @@ pipeline {
 				}
         	}               
         }
+        
+        stage ('Deploy Frontend') {
+        	steps {
+        		dir('frontend') {
+        			git credentialsId: 'github_login', url: 'https://github.com/eniovi/tasks-frontend'
+        			sh 'mvn clean package'
+        			deploy adapters: [tomcat8(credentialsId: 'tomcat_login', path: '', url: 'http://172.29.0.3:8080')], contextPath: 'tasks', war: 'target/tasks.war'
+				}
+        	}               
+        }
 
     }
     
