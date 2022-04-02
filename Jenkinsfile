@@ -45,6 +45,15 @@ pipeline {
             	deploy adapters: [tomcat8(credentialsId: 'tomcat_login', path: '', url: 'http://172.29.0.3:8080')], contextPath: 'tasks-backend', war: 'target/tasks-backend.war'
         	}               
         }
+        
+        stage ('API Test') {
+        	steps {
+        		dir('api-test') {
+        			git credentialsId: 'github_login', url: 'https://github.com/eniovi/tasks-api-test'
+        			sh 'mvn test'
+				}
+        	}               
+        }
 
     }
     
