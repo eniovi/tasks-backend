@@ -81,10 +81,10 @@ pipeline {
             archiveArtifacts artifacts: 'target/tasks-backend.war, frontend/target/tasks.war', onlyIfSuccessful: true
         }
         unsuccessful {
-			emailtext attachlog: true, body: 'See the attached log below', subject: 'Build has failed', to: 'teste@teste.com'            
+			emailext attachlog: true, body: 'See the attached log below', subject: 'Build has failed', to: 'teste@teste.com'            
         }
         fixed {
-			emailtext attachlog: true, body: 'See the attached log below', subject: 'Build is fine', to: 'teste@teste.com'            
+			emailext attachlog: true, body: 'See the attached log below', subject: 'Build is fine', to: 'teste@teste.com'            
         }
 
     }
