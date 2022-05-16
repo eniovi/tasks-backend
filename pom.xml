@@ -65,23 +65,16 @@
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.8.6</version>
-				<configuration>
-					<excludes>
-						<exclude>**/src/test/**</exclude>
-						<exclude>**/model/**</exclude>
-						<exclude>**Application.java</exclude>
-					</excludes>
-				</configuration>
 				<executions>
 					<execution>
-						<id>jacoco-initialize</id>
+						<id>pre-unit-test</id>
 						<goals>
 							<goal>prepare-agent</goal>
 						</goals>
 					</execution>
 					<execution>
-						<id>jacoco-site</id>
-						<phase>package</phase>
+						<id>post-unit-test</id>
+						<phase>test</phase>
 						<goals>
 							<goal>report</goal>
 						</goals>
